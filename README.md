@@ -17,7 +17,7 @@
 
 ## 启动
 
-npm 或者 yarn都可以执行一下命令启动项目
+npm 或者 yarn都可以执行以下命令启动项目
 
 1. npm install 
 2. npm run start
