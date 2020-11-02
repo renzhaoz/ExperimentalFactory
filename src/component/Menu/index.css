@@ -1,0 +1,18 @@
+.warp {
+  overflow: hidden;
+  height: 100%;
+  width: 50%;
+  background: #fff;
+  float: left;
+  padding: 10px 30px 10px;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.item{
+    list-style-position: inside;
+    line-height: 50px;
+    font-weight: 400;
+    font-size: 18px;
+    box-shadow:0 5px 4px -4px rgba(0, 0, 0, 0.3);
+}

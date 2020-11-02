@@ -1,4 +1,7 @@
 .App {
+  overflow: hidden;
+  width: 50%;
+  float: left;
   text-align: center;
 }
 

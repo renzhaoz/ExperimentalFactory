@@ -1,12 +1,32 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
+import Content from './component/Content/index';
+
+
+class Box extends React.Component{
+  componentDidMount(){
+    navigator.serviceWorker.addEventListener('message',(res)=>{
+      console.log('service worker 发送消息了。', res.data)
+    })
+    console.log('start', Date.now());
+  }
+  componentDidUpdate(){
+    console.log('update............')
+  }
+  render(){
+    return(
+      <Content />
+    )
+  }
+}
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <React.Suspense fallback={''}>
+      <Box />
+    </React.Suspense>
   </React.StrictMode>,
   document.getElementById('root')
 );
