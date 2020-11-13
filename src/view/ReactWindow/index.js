@@ -4,12 +4,18 @@ import Fullpage from "react-virtualized-auto-sizer";
 import "./style.css";
 
 export default class A extends React.Component {
+  constructor(props){
+    super(props)
+    this.state={
+    }
+    this.index = 1;
+  }
+  next = () => {
+    this.list.scrollToItem(this.index);
+    this.index++;
+  }
+
   render() {
-    // These row heights are arbitrary.
-    // Yours should be based on the content of the row.
-    const rowSizes = new Array(1000)
-      .fill(true)
-      .map(() => 25 + Math.round(Math.random() * 50));
 
     const getItemSize = (index, ...b) => {
       console.log(index, b);
@@ -22,6 +28,7 @@ export default class A extends React.Component {
       </div>
     );
     return (
+      <>
       <div style={{ height: "600px", border:'1px silid #000' }}>
         <Fullpage>
           {({height, width}) => {
@@ -29,6 +36,7 @@ export default class A extends React.Component {
             return (
               <List
                 className="List"
+                ref={s => this.list = s}
                 height={height}
                 itemCount={1000}
                 itemSize={getItemSize}
@@ -40,6 +48,8 @@ export default class A extends React.Component {
           }}
         </Fullpage>
       </div>
+      <button onClick={this.next}>下一个下一个</button>
+      </>
     );
   }
 }

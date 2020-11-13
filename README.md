@@ -22,4 +22,4 @@ npm 或者 yarn都可以执行以下命令启动项目
 1. npm install 
 2. npm run start
 
-
+然后你将在localhost:3000看到完整的Demo显示。选择菜单以查看相关demo运行结果。

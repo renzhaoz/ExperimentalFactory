@@ -12,6 +12,8 @@ const IconFlash = React.lazy(() => import('../view/IconFlash'));
 const ServerWorker = React.lazy(() => import('../view/ServerWorker'));
 const IndexDB = React.lazy(() => import('../view/IndexDB'));
 const ReactWindow = React.lazy(() => import('../view/ReactWindow'));
+const LibPhoneNumber = React.lazy(() => import('../view/LibPhoneNumber'));
+const ReactView = React.lazy(() => import('../view/ReactView'));
 
 // 对象key和name path中的值保持一致
 export default {
@@ -62,5 +64,17 @@ export default {
         component: ReactWindow,
         type:'',
         path:'ReactWindow'
+    },
+    LibPhoneNumber:{
+        name:'LibPhoneNumber',
+        component: LibPhoneNumber,
+        type:'',
+        path:'LibPhoneNumber'
+    },
+    ReactView:{
+        name:'ReactView',
+        component: ReactView,
+        type:'',
+        path:'ReactView'
     }
 };
