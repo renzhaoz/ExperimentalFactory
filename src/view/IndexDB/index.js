@@ -1,18 +1,29 @@
 import React from "react";
 
-const DBName = "demo";
+const DBName = "demo1233332323";
 const version = 1;
-const DBBaseName = 'gril';
+const DBBaseName = 'gril1333223232323';
 
 export default class extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      value: '0'
     };
   }
 
   componentDidMount() {
+    function e(arg) {
+      if (arg < 10000) {
+        const arg1 = ++arg;
+        console.log(arg1);
+        e(arg1);
+      } else {
+        return false;
+      }
+    }
+    e(0);
+
     let req = indexedDB.open(DBName, version);
     let that = this;
 
@@ -29,6 +40,7 @@ export default class extends React.Component {
     };
 
     req.onupgradeneeded = function (ev) {
+      alert(1111111)
       // 创建新数据库 打开高版本数据库时调用
       console.log("openDb.onupgradeneeded....................");
       // 创建新表
@@ -59,7 +71,7 @@ export default class extends React.Component {
       console.log("数据添加成功。");
     };
     request.onerror = function (ev) {
-      console.log("数据添加失败。",ev.target.error);
+      console.log("数据添加失败。", ev.target.error);
     };
   };
 
@@ -67,18 +79,28 @@ export default class extends React.Component {
     const dataStore = this.db.transaction(DBBaseName).objectStore(DBBaseName);
     dataStore.getAll().onsuccess = (ev) => {
       console.log(ev.target.result);
+
+      const sss = this.db.transaction(DBBaseName, 'readwrite').objectStore(DBBaseName).put({ id: Date.now(), name: '闫妮', age: "38", tel: "119", email: "unknow" })
+      sss.onsuccess = () => {
+        console.log(1111111111111111111)
+      }
+
+      sss.onerror = (error) => {
+        console.log(error, 'sssssssssssssssssssss')
+      }
     }
   }
 
   getAllData_1 = () => {
+    console.log(111111111111111)
     this.db.transaction(DBBaseName).objectStore(DBBaseName).openCursor().onsuccess = (ev) => {
       console.log(ev.target.result);
-      if(ev.target.result){
+      if (ev.target.result) {
         // 循环完所有数据后返回的ev.target.result值为null所以要在这里判断
         // ev.target.result.value是该条数据对象，但是对象是懒挂载的，在这里访问value会有性能问题
         // ev.target.result.key/primaryKey值是该条数据对象的主键
         // ev.target.result.source IDBObjectStore对象
-        ev.target.result.continue(); 
+        ev.target.result.continue();
       }
     };
   }
@@ -88,8 +110,19 @@ export default class extends React.Component {
     alert('仓库已关闭');
   }
 
+  searchDB = () => {
+    const req = this.db.transaction(DBBaseName, 'readwrite').objectStore(DBBaseName).get(this.state.value);
+    req.onsuccess = (ev) => {
+      console.log(ev)
+    }
+
+    req.onerror = (error) => {
+      console.log(error)
+    }
+  }
+
   clearDataBase = () => {
-    const request = this.db.transaction(DBBaseName,'readwrite').objectStore(DBBaseName).clear();
+    const request = this.db.transaction(DBBaseName, 'readwrite').objectStore(DBBaseName).clear();
     request.onerror = (ev) => {
       console.log('清除表数据失败', ev);
     }
@@ -107,6 +140,8 @@ export default class extends React.Component {
         <button onClick={this.getAllData_1}>使用openCursor游标循环获取所有的数据</button>
         <button onClick={this.clearDataBase}>清理仓库中的此数据表</button>
         <button onClick={this.closeDB}>关闭该仓库</button>
+        <input type='text' onChange={(ev) => { this.setState({ value: ev.target.value }) }} value={this.state.value} />
+        <button onClick={this.searchDB}>搜索该仓库</button>
       </>
     );
   }

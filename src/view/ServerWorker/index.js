@@ -4,7 +4,10 @@ import React from 'react';
 class ServerWorker extends React.Component{
   constructor(props){
     super(props);
-    this.state={}
+    this.state={};
+    setTimeout(navigator.serviceWorker.addEventListener('message', () => {
+      console.log('MSG..................')
+    }), 3000);
   }
 
   render(){

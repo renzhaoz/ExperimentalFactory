@@ -1,23 +1,30 @@
 import React from 'react';
 
+window.localStorage.aa = 'aa';
 class RenderProps extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            name:'Test render to string'
+            name: window.localStorage.aa
         }
     }
 
-    componentDidMount(){
-        console.log('ddddddddddddddddd');
+    reRender = () => {
+        this.setState({
+            name: 'click............'
+        }, () => {
+            localStorage.aa = 'QQQQQQQQQQQQQQQQQQQQQQQQ'
+        });
     }
+
     render(){
+        console.log('render...........')
         const { name } = this.state;
         return(
             <>  
                 <br/>
-                <h2>{name}</h2>
-                <h3>{'this is props name:' + this.props.name}</h3>
+                <h2>Render To String {name}</h2>
+                <h3 onClick={this.reRender} >'HHHHHHHHHHHHHHHH'</h3>
             </>
         )
     }

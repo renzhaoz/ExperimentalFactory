@@ -4,7 +4,7 @@ import routerConfig from '../router/routerConfig';
 // 根据hash信息 动态load组件
 const changeView = () => {
     const bowerHash = window.location.hash.split('#')[1] || '';
-    let viewName = 'home'
+    let viewName = 'Home'
 
     if(!routerConfig[bowerHash] || bowerHash === ''){
         // no such view

@@ -6,15 +6,23 @@ import Content from './component/Content/index';
 
 
 class Box extends React.Component{
-  componentDidMount(){
-    navigator.serviceWorker.addEventListener('message',(res)=>{
-      console.log('service worker 发送消息了。', res.data)
-    })
-    console.log('start', Date.now());
+  constructor(props){
+    super(props);
+    window.onload = () => {
+      console.log(1111111111111);
+    }
   }
+
+  componentDidMount(){
+    window.onload = () => {
+      console.log(1111111111111);
+    }
+  }
+
   componentDidUpdate(){
     console.log('update............')
   }
+
   render(){
     return(
       <Content />
@@ -23,11 +31,11 @@ class Box extends React.Component{
 }
 
 ReactDOM.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <React.Suspense fallback={''}>
       <Box />
-    </React.Suspense>
-  </React.StrictMode>,
+    </React.Suspense>,
+  // </React.StrictMode>,
   document.getElementById('root')
 );
 

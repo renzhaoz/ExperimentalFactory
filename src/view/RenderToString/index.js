@@ -2,13 +2,24 @@ import React from 'react';
 import RenderServer from 'react-dom/server';
 import Hello from './hello';
 
+window.localStorage.aaa = 'default aaa';
+
 class RenderProps extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            aaa: localStorage.aaa
+        }
+    }
     componentDidMount(){
             // console.log(res.default);
             console.log('sssssssssss');
-            const e = RenderServer.renderToString(<Hello name='渲染静态组件to字符串，使用dom方法挂载' />);
-            console.log(e);
-            document.querySelector('.warp').innerHTML = e;
+            window.aa = this.renderToString1;
+    }
+
+    renderToString1 = () => {
+        const ss= RenderServer.renderToString(<Hello  />);
+        console.log(ss);
     }
 
     render(){
@@ -16,7 +27,7 @@ class RenderProps extends React.Component{
             <div className='box' style={{overflow:'auto'}}>
                 <p className='xx'>xxxxxxxx</p>
                 <h5>Here are real React Compoennt render!</h5>
-                <Hello name='组件挂载渲染' />
+                <Hello />
 
                 <h5>Here are Render To String First!</h5>
                 <div className='warp'>

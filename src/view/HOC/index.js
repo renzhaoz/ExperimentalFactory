@@ -1,6 +1,5 @@
 import React from 'react';
 import './index.css'
-
 class HOC extends React.Component{
     render(){
         return(

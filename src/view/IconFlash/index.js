@@ -1,24 +1,15 @@
 import React from 'react';
 
-import './gaia-icons.css';
+import './index.css';
 
 class Icon extends React.Component{
   render(){
-    const arr = [];
-    (function createArr(aru){if(aru>0){arr.push(aru);aru--;createArr(aru)}})(1000);
-    console.log(arr);
-    window.arr= arr;
     return(
       <ul>
-        {arr.map((res,index) => {
-            return(
-            <li key={-index}>
-              <i key={index} className='icon' data-icon='contacts' role='presentation' />
-              <i key={`${index}Two`} className='icon' data-icon='call-outgoing' role='presentation' />
-            </li>)
-        })}
+        <ol className="icon-font addContent call-sim2"></ol>
+        <ol className="icon-font Unicode">&#xf180;</ol>
+        <ol className='icon-font' data-icon='contacts'></ol>
       </ul>
-        
     )
   }
 }

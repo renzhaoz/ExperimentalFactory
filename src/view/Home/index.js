@@ -8,7 +8,7 @@ class Home extends React.Component{
         return(
             <>
                 <App/>
-                <Menu/>
+                <Menu ref={(re)=>{ this.c = re;console.log(123)}}/>
             </>
         )
     }

@@ -8,7 +8,7 @@ class ViewBox extends React.Component{
         super(props);
         console.log('ViewBox')
         this.state={
-            viewName: window.sessionStorage.viewId || 'home'
+            viewName: window.sessionStorage.viewId || 'Home'
         }
     }
 
@@ -31,9 +31,10 @@ class ViewBox extends React.Component{
 
     render(){
         const { viewName } = this.state;
+        console.log(viewName, routerConfig[viewName])
         return(
             <div className={`${viewName} content`}>
-                {viewName !== 'home' && <div onClick={this.back} className='back'>Back</div>}
+                {viewName !== 'Home' && <div onClick={this.back} className='back'>Back</div>}
                 {React.createElement(routerConfig[viewName].component)}
             </div>
         )
