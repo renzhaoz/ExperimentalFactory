@@ -3,9 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "base-component": "git+ssh://git@git.kaiostech.com:zhaozhao.ren/base_component.git",
-    "react-option-menu": "git+ssh://git@git.kaiostech.com:zhaozhao.ren/react-option-menu.git#next",
-
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",

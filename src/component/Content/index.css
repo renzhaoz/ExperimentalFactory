@@ -5,9 +5,7 @@
 }
 
 .back{
-    position: absolute;
-    left: 0;
-    top: 0;
+    position: relative;
     width: 48px;
     height: 28px;
     color: #000;

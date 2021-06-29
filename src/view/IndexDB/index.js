@@ -13,21 +13,11 @@ export default class extends React.Component {
   }
 
   componentDidMount() {
-    function e(arg) {
-      if (arg < 10000) {
-        const arg1 = ++arg;
-        console.log(arg1);
-        e(arg1);
-      } else {
-        return false;
-      }
-    }
-    e(0);
-
     let req = indexedDB.open(DBName, version);
     let that = this;
 
     req.onsuccess = function (ev) {
+      console.log('open indexed success!')
       // 这里的this指向req对象。
       that.db = ev.target.result;
       console.log("打开仓库成功", that.db);
@@ -40,7 +30,7 @@ export default class extends React.Component {
     };
 
     req.onupgradeneeded = function (ev) {
-      alert(1111111)
+      console.log('onupgradeneeded success!')
       // 创建新数据库 打开高版本数据库时调用
       console.log("openDb.onupgradeneeded....................");
       // 创建新表
@@ -53,6 +43,7 @@ export default class extends React.Component {
       store.createIndex("name", "name", { unique: false });
       store.createIndex("age", "age", { unique: false });
       store.createIndex("tel", "tel", { unique: false });
+      store.createIndex("date", "date", { unique: false });
       store.createIndex("email", "email", { unique: false });
 
       // 创建表和索引完成的事件回调
@@ -62,10 +53,13 @@ export default class extends React.Component {
     };
   }
 
+  index = 0;
+
   saveData = () => {
     console.log(this.db);
+    this.index = this.index + 1;
     const request = this.db.transaction([DBBaseName], 'readwrite').objectStore(DBBaseName)
-      .add({ id: Date.now(), name: '闫妮', age: "38", tel: "119", email: "unknow" });
+      .add({ id: Date.now(), name: '闫妮', date: 1, age: "38", tel: "119", email: "unknow" });
     request.onsuccess = function (ev) {
       console.log(ev);
       console.log("数据添加成功。");
@@ -131,6 +125,23 @@ export default class extends React.Component {
     }
   }
 
+  delete = () => {
+    const keyRange = IDBKeyRange.only(2, 3, 4, 5)
+    const r = this.db.transaction(DBBaseName, 'readwrite').objectStore(DBBaseName);
+    const req = r.delete(keyRange);
+    req.onsuccess = (res) => {
+      console.log(res)
+    }
+  }
+
+  searchDBYanNi = () => {
+    const store = this.db.transaction(DBBaseName, 'readwrite').objectStore(DBBaseName);
+    const index = store.index('date').openCursor();
+    index.onsuccess = (res) => {
+      console.log(res)
+    }
+  }
+
   render() {
     return (
       <>
@@ -138,10 +149,12 @@ export default class extends React.Component {
         <button onClick={this.saveData}>新建一条数据数据</button>
         <button onClick={this.getAllData}>使用getAll获取所有的数据</button>
         <button onClick={this.getAllData_1}>使用openCursor游标循环获取所有的数据</button>
+        <button onClick={this.delete}>删除一个或者多个</button>
         <button onClick={this.clearDataBase}>清理仓库中的此数据表</button>
         <button onClick={this.closeDB}>关闭该仓库</button>
         <input type='text' onChange={(ev) => { this.setState({ value: ev.target.value }) }} value={this.state.value} />
         <button onClick={this.searchDB}>搜索该仓库</button>
+        <button onClick={this.searchDBYanNi}>查询name为闫妮</button>
       </>
     );
   }

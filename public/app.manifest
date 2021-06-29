@@ -1,0 +1,21 @@
+CACHE MANIFEST
+# v1.0.0
+/server_worker.js
+/sw.js
+/static/js/bundle.js
+/static/js/29.chunk.js
+/static/js/main.chunk.js
+/static/js/2.chunk.js
+/static/media/logo.5d5d9eef.svg
+/favicon.ico
+/logo192.png
+/indexDB.js
+/index.html
+
+NETWORK:
+# 必须从网络下载的文件
+
+FALLBACK:
+# 缓存读取失败需要展示的页面
+/index.html
+

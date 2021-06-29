@@ -5,26 +5,26 @@ import * as serviceWorker from './serviceWorker';
 import Content from './component/Content/index';
 
 
-class Box extends React.Component{
-  constructor(props){
+class Box extends React.Component {
+  constructor(props) {
     super(props);
     window.onload = () => {
       console.log(1111111111111);
     }
   }
 
-  componentDidMount(){
+  componentDidMount() {
     window.onload = () => {
       console.log(1111111111111);
     }
   }
 
-  componentDidUpdate(){
+  componentDidUpdate() {
     console.log('update............')
   }
 
-  render(){
-    return(
+  render() {
+    return (
       <Content />
     )
   }
@@ -32,9 +32,9 @@ class Box extends React.Component{
 
 ReactDOM.render(
   // <React.StrictMode>
-    <React.Suspense fallback={''}>
-      <Box />
-    </React.Suspense>,
+  <React.Suspense fallback={''}>
+    <Box />
+  </React.Suspense>,
   // </React.StrictMode>,
   document.getElementById('root')
 );

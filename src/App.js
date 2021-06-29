@@ -1,9 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
-import './App.css';
-import E from './A.js';
 
-console.log(new E());
+import './App.css';
 
 function App() {
   return (

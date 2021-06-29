@@ -10,4 +10,8 @@ export default [
   'ReactView',
   'HTML5',
   'ReactBase',
+  'ReactEvent',
+  'Demo',
+  'ReactHook',
+  // 'ReactMemo'
 ];

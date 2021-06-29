@@ -1,0 +1,12 @@
+CACHE MANIFEST
+# v1.1.0
+/fuck/js/app.js
+/fuck/index.html
+
+NETWORK:
+# 必须从网络下载的文件
+
+FALLBACK:
+# 缓存读取失败需要展示的页面
+/index.html
+

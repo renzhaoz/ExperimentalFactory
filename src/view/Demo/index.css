@@ -1,0 +1,20 @@
+#demo{
+  position: relative;
+  width: 600px;
+  height: 600px;
+  border: 1px solid red;
+}
+
+.ff:focus{
+  color: red;
+  font-size: 64px;
+}
+
+#cover{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgb(192, 250, 192);
+}
